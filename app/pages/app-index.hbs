@@ -1,0 +1,30 @@
+{{#if currentUser}}
+  <div object key:page-title="@search">
+    <div target:page-title="@innerText">Page title</div>
+    <button edit:page-title>Edit page title</button>
+  </div>
+
+
+<div object>
+  <button new:country>Add Country</button>
+  <div array key="countries" sortable>
+    {{#for country in countries}}
+        <div object key:id="{{country.id}}" key:country-name="@search">
+          <h1 target:country-name="@innerText" edit:country-name:without-remove>{{default country.countryName "Country"}}</h1>
+          <div object key:description="@innerText" edit:description>Country Description</div>
+          <ul array key="cities">
+            {{#for city in country.cities}}
+              <li object key:city-name="@search" key:city-description="@search">
+                <div target:city-name="@innerText">{{default city.cityName "City"}}</div>
+                <div target:city-description="@innerText">{{default city.cityDescription "Description"}}
+                <button edit:city-name edit:city-description>Edit City</button>
+                </div>
+              </li>
+            {{/for}}
+          </ul>
+          <button new:city>Add City</button>
+        </div>
+    {{/for}}
+  </div>
+</div>
+{{/if}}

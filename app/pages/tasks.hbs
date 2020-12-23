@@ -1,0 +1,17 @@
+<h1>Welcome to the Tasks!</h1>
+<h1 object key:page-title="@innerText" edit:page-title>Task  List</h1>
+
+<div object>
+  <ul array key="tasks" sortable>
+    {{#for task in tasks}}
+      <li
+        object
+        key:text="@innerText"
+        edit:text
+      >{{default task.text "New task item"}}</li>
+    {{/for}}
+  </ul>
+    {{#if currentUser}}
+  <button new:task>Add Task</button>
+  {{/if}}
+</div>
